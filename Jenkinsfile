@@ -10,11 +10,7 @@ pipeline {
                 echo "${MyName}"
             }
         }
-        stage('Clone') {
-            steps {
-                git 'https://github.com/coolgourav147/simple-nodejs.git'
-            }
-        }
+       
         stage('Build') {
             steps {
                 sh ''' docker image build -t mysamplenodejs:${BUILD_ID} . '''
