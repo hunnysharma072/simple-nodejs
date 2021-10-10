@@ -10,15 +10,21 @@ pipeline {
     }
     stages {
         stage('printing variables'){
+            environment { 
+       
+        MyVariable1 = 'In PrintVariable'
+    }
             steps{
                 echo "${MyName}"
                 echo "${MyVariable}"
+                echo "${MyVariable1}"
             }
         }
        
         stage('Build') {
             steps {
                 echo "${MyVariable}"
+                echo "${MyVariable1}"
                 sh ''' docker image build -t mysamplenodejs:${BUILD_ID} . '''
             }
         }
