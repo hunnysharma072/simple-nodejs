@@ -11,9 +11,8 @@ pipeline {
     stages {
         stage('printing variables'){
             environment { 
-       
-        MyVariable1 = 'In PrintVariable'
-    }
+                MyVariable1 = 'In PrintVariable'
+            }
             steps{
                 echo "${MyName}"
                 echo "${MyVariable}"
@@ -47,6 +46,20 @@ pipeline {
                 sh 'docker container run -itd -p ${ProdPublishPort}:8080 mysamplenodejs:${BUILD_ID}'
                 echo 'Hello Deploy on prod'
             }
+        }
+    }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        aborted {
+             echo 'aborted'
+        }
+        success {
+            echo 'success'
+        }
+        failure {
+            echo 'failure'
         }
     }
 }
