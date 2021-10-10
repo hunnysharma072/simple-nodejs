@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "${MyVariable}"
-                echo "${MyVariable1}"
+                sh 'echo ${MyVariable1}'
                 sh ''' docker image build -t mysamplenodejs:${BUILD_ID} . '''
             }
         }
