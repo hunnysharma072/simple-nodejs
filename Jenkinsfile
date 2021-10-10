@@ -6,16 +6,19 @@ pipeline {
     environment { 
         DevPublishPort = '1045'
         ProdPublishPort = '1046'
+        MyVariable = 'gValue Here'
     }
     stages {
         stage('printing variables'){
             steps{
                 echo "${MyName}"
+                echo "${MyVariable}"
             }
         }
        
         stage('Build') {
             steps {
+                echo "${MyVariable}"
                 sh ''' docker image build -t mysamplenodejs:${BUILD_ID} . '''
             }
         }
